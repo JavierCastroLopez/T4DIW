@@ -1,0 +1,53 @@
+/* Ejercicio 4.1 - Selectores CSS */
+
+/* 1. Pestaña activa: color primario y negrita */
+nav a[aria-current="page"] {
+  color: #2563eb;
+  font-weight: 700;
+}
+
+/* 2. Resto de enlaces de la barra: gris */
+nav a:not([aria-current="page"]) {
+  color: #64748b;
+}
+
+nav a:not([aria-current="page"]):hover,
+nav a:not([aria-current="page"]):focus-visible {
+  color: #1e293b;
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}
+
+/* 3. Tarjetas: clase card a los <article> de recomendados, h2 + .card */
+section h2 + .card {
+  border-top: 2px solid #2563eb;
+  padding-top: 1rem;
+  margin-top: 1rem;
+}
+
+article.card {
+  background-color: #f8fafc;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid #e2e8f0;
+}
+
+/* 4. Badges: ocultar vacíos y resaltar tarjetas con badge visible */
+.badge:empty {
+  display: none;
+}
+
+article:has(.badge:not(:empty)) {
+  border-color: #2563eb;
+  border-width: 2px;
+}
+
+/* 5. Botones de icono */
+button[aria-label] {
+  background: none;
+  border: none;
+  font-size: 1.25rem;
+  cursor: pointer;
+  padding: 0.25rem;
+}
