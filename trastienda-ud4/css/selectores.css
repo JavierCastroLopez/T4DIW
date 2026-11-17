@@ -2,35 +2,27 @@
 
 /* 1. Pestaña activa: color primario y negrita */
 nav a[aria-current="page"] {
-  color: #2563eb;
+  color: var(--brand);
   font-weight: 700;
 }
 
-/* 2. Resto de enlaces de la barra: gris */
+/* 2. Resto de enlaces de la barra: gris, con :hover y :focus-visible */
 nav a:not([aria-current="page"]) {
-  color: #64748b;
+  color: var(--text-muted);
 }
 
-nav a:not([aria-current="page"]):hover,
-nav a:not([aria-current="page"]):focus-visible {
-  color: #1e293b;
-  outline: 2px solid #2563eb;
+nav a:not([aria-current="page"]):hover {
+  color: var(--text-main);
+}
+
+nav a:focus-visible {
+  outline: 2px solid var(--brand);
   outline-offset: 2px;
 }
 
-/* 3. Tarjetas: clase card a los <article> de recomendados, h2 + .card */
-section h2 + .card {
-  border-top: 2px solid #2563eb;
-  padding-top: 1rem;
-  margin-top: 1rem;
-}
-
-article.card {
-  background-color: #f8fafc;
-  border-radius: 8px;
-  padding: 1rem;
-  margin-bottom: 1rem;
-  border: 1px solid #e2e8f0;
+/* 3. Primera tarjeta de cada sección (hermano justo después del h2) */
+h2 + .card {
+  border-top: 2px solid var(--brand);
 }
 
 /* 4. Badges: ocultar vacíos y resaltar tarjetas con badge visible */
@@ -39,15 +31,16 @@ article.card {
 }
 
 article:has(.badge:not(:empty)) {
-  border-color: #2563eb;
+  border-color: var(--brand);
   border-width: 2px;
 }
 
-/* 5. Botones de icono */
+/* 5. Botones de solo icono (el padding fino llega en el modelo de caja) */
 button[aria-label] {
   background: none;
+  color: inherit;
   border: none;
-  font-size: 1.25rem;
+  font-size: var(--text-xl);
   cursor: pointer;
   padding: 0.25rem;
 }
