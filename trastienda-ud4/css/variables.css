@@ -1,0 +1,105 @@
+/* Ejercicio 4.1 - Variables CSS, color moderno y anidamiento */
+
+/* 1. Tokens en :root */
+:root {
+  /* Escala primaria */
+  --color-primary-50: #eff6ff;
+  --color-primary-100: #dbeafe;
+  --color-primary-200: #bfdbfe;
+  --color-primary-300: #93c5fd;
+  --color-primary-400: #60a5fa;
+  --color-primary-500: #2563eb;
+  --color-primary-600: #1d4ed8;
+  --color-primary-700: #1d40af;
+  --color-primary-800: #1e3a8a;
+  --color-primary-900: #172554;
+
+  /* Escala neutra */
+  --color-neutral-50: #f8fafc;
+  --color-neutral-100: #f1f5f9;
+  --color-neutral-200: #e2e8f0;
+  --color-neutral-300: #cbd5e1;
+  --color-neutral-400: #94a3b8;
+  --color-neutral-500: #64748b;
+  --color-neutral-600: #475569;
+  --color-neutral-800: #1e293b;
+  --color-neutral-900: #0f172a;
+
+  /* Mapeo semántico */
+  --bg-page: var(--color-neutral-50);
+  --bg-card: #ffffff;
+  --text-main: var(--color-neutral-900);
+  --text-muted: var(--color-neutral-500);
+  --brand: var(--color-primary-500);
+  --brand-hover: var(--color-primary-600);
+
+  /* 2. Experimento con oklch() */
+  --color-accent-oklch: oklch(0.65 0.20 260);
+}
+
+/* 3. Anidamiento en la barra de navegación */
+nav {
+  background-color: var(--bg-card);
+  border-top: 1px solid var(--border-subtle);
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 1rem;
+  }
+  a {
+    color: var(--text-muted);
+    text-decoration: none;
+    &[aria-current="page"] {
+      color: var(--brand);
+      font-weight: 700;
+    }
+    &:hover {
+      color: var(--text-main);
+    }
+  }
+}
+
+/* 4. Tarjeta con anidamiento y tokens */
+article.card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+
+  h3 {
+    color: var(--text-main);
+    font-size: 1.125rem;
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    color: var(--text-muted);
+    font-size: 0.875rem;
+    margin: 0.25rem 0;
+  }
+
+  .badge {
+    background-color: var(--color-accent-oklch);
+    color: #ffffff;
+    font-size: 0.75rem;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    text-transform: uppercase;
+  }
+
+  button {
+    background-color: var(--brand);
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.875rem;
+    cursor: pointer;
+    &:hover {
+      background-color: var(--brand-hover);
+    }
+  }
+}
